@@ -22,7 +22,7 @@ function criarJanela(){
             setZoomFactor: 1.0 //deixando o zoom em 100%
         }
     })
-    janela.loadFile('index.html') 
+    janela.loadFile('../app/login/login.html') 
    
     
     janela.removeMenu() //remover menu padrão do electron
@@ -35,24 +35,9 @@ function criarJanela(){
     janela.webContents.on('context-menu', () => {
         menu.popup({window: janela})
     })
-}
-const criarJanela2 = () => {
-    const janela = new BrowserWindow({
-        width: 300,
-        height: 300,
-        resizable: false,
-        maximizable: false,
-        minimizable: false,
-        title: "Sobre a aplicação",
-        webPreferences: {
-            nodeIntegration: true,
-            devTools: true
-        }
-    })
-    janela.loadFile('../Desktop/sobre.html');
     janela.webContents.openDevTools();
-    janela.setMenu(null);
 }
+
 const template = [
     {label: "Aplicação", 
         submenu:[
@@ -83,3 +68,22 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
+
+let listaUser = []
+
+ipcMain.handle('cadastro', (event, pessoa) => { 
+    listaUser.push(pessoa)
+    console.log(listaUser)
+    return null
+})
+ipcMain.handle('login', (event, pessoa) => {
+    console.log(`Login tentativa = ${pessoa}`)
+    console.log(`Usuario do array = ${listaUser[0]}`)
+    const usuarioEncontrado = listaUser.find(user => user.email === pessoa.email && user.senha === pessoa.senha);
+    if (usuarioEncontrado) {
+        return usuarioEncontrado.email;
+    } else {
+        return false;
+    }
+})
+

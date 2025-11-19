@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="vAplicaçãoiewport" content="width=device-width, initial-scale=1.0">
+<title>Página de Login</title>
+ <link rel="stylesheet" href="principal.css">
+
+</head>
+
+<body>
+
+<!-- ====== BARRA SUPERIOR ====== -->
+<div class="top-bar">
+    <div>Aplicação</div>
+    
+</div>
+
+<!-- ====== CONTAINER DE LOGIN ====== -->
+<div class="login-container">
+    <h1 id="nomeusuario"></h1>
+  
+ <script >
+ const usuario = localStorage.getItem('usuarioLogado');
+    document.getElementById('nomeusuario').innerText = `Bem-vindo, ${usuario}`;
+ </script>
+</body>
+</html>

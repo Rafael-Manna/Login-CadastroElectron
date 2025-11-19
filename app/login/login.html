@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página de Login</title>
+ <link rel="stylesheet" href="login.css">
+
+</head>
+
+<body>
+
+<!-- ====== BARRA SUPERIOR ====== -->
+<div class="top-bar">
+    <div>Aplicação</div>
+    <div class="logos">
+        
+    </div>
+</div>
+
+<!-- ====== CONTAINER DE LOGIN ====== -->
+<div class="login-container">
+    <h1>Login</h1>
+    <label for="email">Seu Email*</label><br>
+    <input type="text" id="email" placeholder="usuario@exemplo.com"><br><br>
+    <label for="senha">Sua Senha*</label><br>
+    <input type="password" id="senha" placeholder="Senha"><br>   
+    <p id="mensagem-erro"></p>
+<div id="aviso-bloqueio" style="font-size:0.9rem;color:#7a7a7a;margin-top:6px;"></div>
+    <br>
+    <button id="botaologin" onclick="realizarLogin()">Entrar</button> <br> <br>
+        <button id="botaocadastro" onclick="realizarCadastro()">Cadastre-se</button>
+
+</div>
+ <script src="renderer.js"></script>
+</body>
+</html>
