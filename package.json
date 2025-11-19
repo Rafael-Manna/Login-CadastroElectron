@@ -1,0 +1,23 @@
+{
+  "name": "login-cadastroelectron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start" : "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rafael-Manna/Login-CadastroElectron.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rafael-Manna/Login-CadastroElectron/issues"
+  },
+  "homepage": "https://github.com/Rafael-Manna/Login-CadastroElectron#readme",
+  "dependencies": {
+    "electron": "^39.2.2"
+  }
+}
