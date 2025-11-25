@@ -1,6 +1,7 @@
 import {app, BrowserWindow, nativeTheme, ipcMain, Menu} from 'electron'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
+import fs from 'node:fs'
 
 const __filename = fileURLToPath(import.meta.url) 
 const __dirname = path.dirname(__filename) 
@@ -68,17 +69,20 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
-
+const arquivoDados = path.join(__dirname, './logs/dados.json')
 let listaUser = []
 
 ipcMain.handle('cadastro', (event, pessoa) => { 
     listaUser.push(pessoa)
+fs.writeFileSync(arquivoDados, JSON.stringify(listaUser, null, 2))
     console.log(listaUser)
     return null
 })
 ipcMain.handle('login', (event, pessoa) => {
     console.log(`Login tentativa = ${pessoa}`)
     console.log(`Usuario do array = ${listaUser[0]}`)
+    let logsData = fs.readFileSync(arquivoDados)
+    listaUser = JSON.parse(logsData)
     const usuarioEncontrado = listaUser.find(user => user.email === pessoa.email && user.senha === pessoa.senha);
     if (usuarioEncontrado) {
         return usuarioEncontrado.email;
